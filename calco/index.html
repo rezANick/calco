@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calco</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1 id="first">Mon titre principal</h1>
+
+<div id="container">
+    <table>
+        <tr><input type="text" readonly="readonly" id="ecran"></tr>
+        <tr>
+            <td><input type="button" value="CE" onclick="reset()"></td>
+            <td><input type="button" value="<-"></td>
+            <td><input type="button" value="%" onclick="affiche('%')"></td>
+            <td><input type="button" value="+" onclick="affiche('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="affiche(7);check()"></td>
+            <td><input type="button" value="8" onclick="affiche(8);check()"></td>
+            <td><input type="button" value="9" onclick="affiche(9);check()"></td>
+            <td><input type="button" value="-" onclick="affiche('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="affiche(4);check()"></td>
+            <td><input type="button" value="5" onclick="affiche(5);check()"></td>
+            <td><input type="button" value="6" onclick="affiche(6);check()"></td>
+            <td><input type="button" value="*" onclick="affiche('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="affiche(1);check()" ></td>
+            <td><input type="button" value="2" onclick="affiche(2);check()"></td>
+            <td><input type="button" value="3" onclick="affiche(3);check()"></td>
+            <td><input type="button" value="/" onclick="affiche('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0"onclick="affiche(0)"></td>
+            <td><input type="button" value="-/+" onclick="affiche('-/+')"></td>
+            <td><input type="button" value="," onclick="affiche('.')"></td>
+            <td><input type="button" value="=" onclick="calcul()"></td>
+        </tr>
+
+    </table>
+</div>
+
+<script>
+    var first='';
+    function affiche(n) {
+        var afficheur=document.getElementById("ecran").value;
+        if (n=='-/+'){
+            document.getElementById("ecran").value= -1 * afficheur;
+        }else if (n==','){
+            document.getElementById("ecran").value=afficheur + '.';
+        }
+        else if (afficheur==''){
+            document.getElementById("ecran").value += n;
+        }else{
+            document.getElementById("ecran").value+=n;
+        }
+    }
+    function operation(s) {
+        first=eval(document.getElementById("ecran").value);
+        var op= first + s;
+
+    }
+    function calcul(){
+
+                document.getElementById("ecran").value= eval(document.getElementById("ecran").value);
+            }
+    function reset(){
+        document.getElementById("ecran").value='0';
+    }
+</script>
+</body>
+</html>
